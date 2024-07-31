@@ -14,15 +14,12 @@ import java.util.Map;
 @RequestMapping("/ai")
 class MyController {
 
-    private final OpenAIService openAIService;
-
     private final ChatClient chatClient;
     ListOutputConverter listOutputConverter = new ListOutputConverter(new DefaultConversionService());
     MapOutputConverter mapOutputConverter = new MapOutputConverter();
     BeanOutputConverter beanOutputConverter = new BeanOutputConverter(Author.class);
 
-    public MyController(OpenAIService openAIService, ChatClient.Builder chatClientBuilder) {
-        this.openAIService = openAIService;
+    public MyController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder
                 .build();
     }
