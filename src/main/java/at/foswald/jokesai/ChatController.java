@@ -66,10 +66,11 @@ class MyController {
     @GetMapping("/songs/top10byArtist")
     public List<String> songs(@RequestParam(value = "artist", defaultValue = "Taylor Swift") String artist) {
 
-        String messageSystem = String.format("Deine primäre Funktion sollte sein Top 10 songs von diversen Künstlern zurück zu geben\n" +
-                "Wenn du den Künstler nicht kennst, sag \"Ich kenne diesen Künstler nicht.\"\n" +
-                "Wenn der Künstler keine Top 10 Songs hat, sag \"Dieser Künstler hat keine Top 10 Songs.\"\n" +
-                "Hier ist das Format in dem ich meine Antwort erwarte %s", listOutputConverter.getFormat());
+        String messageSystem = String.format("""
+                Deine primäre Funktion sollte sein Top 10 songs von diversen Künstlern zurück zu geben
+                Wenn du den Künstler nicht kennst, sag "Ich kenne diesen Künstler nicht."
+                Wenn der Künstler keine Top 10 Songs hat, sag "Dieser Künstler hat keine Top 10 Songs."
+                Hier ist das Format in dem ich meine Antwort erwarte %s""", listOutputConverter.getFormat());
 
         String messageUser = String.format("Bitte gib mir eine Liste von Top 10 Songs des Künstlers %s.", artist);
 
@@ -83,10 +84,11 @@ class MyController {
     @GetMapping("/social-links/fromAuthor/{author}")
     public Map<String, Object> getAuthorsSocialLinks(@PathVariable String author) {
 
-        String messageSystem = String.format("Deine primäre Funktion sollte sein die Social Media Link diverser Buch Autoren zurück zu geben\n" +
-                "Wenn du den Autor nicht kennst, sag \"Ich kenne diesen Autor nicht.\"\n" +
-                "Wenn der Autor keine Social Media Links hat, sag \"Dieser Autor hat keine Social Media Links.\"\n" +
-                "Hier ist das Format in dem ich meine Antwort erwarte %s", mapOutputConverter.getFormat());
+        String messageSystem = String.format("""
+                Deine primäre Funktion sollte sein die Social Media Link diverser Buch Autoren zurück zu geben
+                Wenn du den Autor nicht kennst, sag "Ich kenne diesen Autor nicht."
+                Wenn der Autor keine Social Media Links hat, sag "Dieser Autor hat keine Social Media Links."
+                Hier ist das Format in dem ich meine Antwort erwarte %s""", mapOutputConverter.getFormat());
 
         String messageUser = String.format("Bitte gib mir die Social Media Links des Authors %s.", author);
 
@@ -97,27 +99,7 @@ class MyController {
                 .content());
     }
 
-//    @GetMapping("/books/byAuthor/{author}")
-//    public Object getBooksByAuthor(@PathVariable String author) {
-//
-//        String messageSystem = String.format("Deine primäre Funktion sollte sein die Bücher der Autoren zurück zu geben\n" +
-//                "Wenn du den Autor nicht kennst, sag \"Ich kenne diesen Autor nicht.\"\n" +
-//                "Wenn der Autor keine Bücher hat, sag \"Dieser Autor hat keine Bücher.\"\n" +
-//                "Hier ist das Format in dem ich meine Antwort erwarte %s", beanOutputConverter.getFormat());
-//
-//        String messageUser = String.format("Bitte gib mir die Bücher des Authors %s.", author);
-//
-//        String content = this.chatClient.prompt()
-//                .system(messageSystem)
-//                .user(messageUser)
-//                .call()
-//                .content();
-//
-//        System.err.println(content);
-//
-//        return beanOutputConverter.convert(content);
-//    }
-
+    // Javadoc
     @GetMapping("/books/byAuthor/{author}")
     public Object getBooksByAuthor(@PathVariable String author) {
         String systemPrompt =
