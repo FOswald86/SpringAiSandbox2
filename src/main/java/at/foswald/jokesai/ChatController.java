@@ -26,6 +26,7 @@ class MyController {
     }
 
     //region simple prompts
+    // doc
     @GetMapping("/joke")
     public String generalJoke() {
         return this.chatClient.prompt()
