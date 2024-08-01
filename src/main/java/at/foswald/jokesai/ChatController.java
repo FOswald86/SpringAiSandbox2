@@ -99,6 +99,7 @@ class MyController {
                 .content());
     }
 
+    // Javadoc
     @GetMapping("/books/byAuthor/{author}")
     public Object getBooksByAuthor(@PathVariable String author) {
         String systemPrompt =
